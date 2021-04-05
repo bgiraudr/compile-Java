@@ -27,12 +27,12 @@ then
     
 elif [ "$1" = "compress" ] #create a .zip with the javadoc all the files
 then
-    number=$(pwd | rev | cut -d/ -f2 | rev)
+    directory=$(pwd | rev | cut -d/ -f2 | rev)
     du -a ../src | awk '/java/ {print $2}' | xargs -r javadoc -private -author -d ../javaDoc
     cd ../src
-    zip -r ../$name-$number *
+    zip -r ../$name-$directory *
     cd ..
-    zip -r $name-$number javaDoc/*
+    zip -r $name-$directory javaDoc/*
     
 else #we have specified a file
     if [ "$2" = "a" ] #compile all before run the program
