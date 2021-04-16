@@ -2,6 +2,7 @@
 
 var=$(du -a ../src | awk '/java/ {print $2}' | wc -l)
 name='ABCDEFG'
+javadocfolder='javaDoc'
 
 if [ -z "$1" ] #no file specified
 then 
@@ -23,16 +24,18 @@ then
     
 elif [ "$1" = "javadoc" ] #generate the javadoc
 then
-    du -a ../src | awk '/java/ {print $2}' | xargs -r javadoc -private -author -d ../javaDoc
+    rm -rf ../$javadocfolder
+    du -a ../src | awk '/java/ {print $2}' | xargs -r javadoc -private -author -d ../$javadocfolder
     
 elif [ "$1" = "compress" ] #create a .zip with the javadoc all the files
 then
     directory=$(pwd | rev | cut -d/ -f2 | rev)
-    du -a ../src | awk '/java/ {print $2}' | xargs -r javadoc -private -author -d ../javaDoc
+    rm -rf ../$javadocfolder
+    du -a ../src | awk '/java/ {print $2}' | xargs -r javadoc -private -author -d ../$javadocfolder
     cd ../src
     zip -r ../$name-$directory *
     cd ..
-    zip -r $name-$directory javaDoc/*
+    zip -r $name-$directory $javadocfolder/*
     
 else #we have specified a file
     if [ "$2" = "a" ] #compile all before run the program
