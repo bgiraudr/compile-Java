@@ -2,6 +2,9 @@
 
 Just a makefile to compile and run java file with this specific organization :
 
+require `zip` see here https://archlinux.org/packages/extra/x86_64/zip
+`sudo pacman -S zip`
+
 ```.
 ├── class
 │   └── *.class
