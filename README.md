@@ -1,22 +1,24 @@
 # compile-Java
 
-Just a little bash script to compile and run java file with this specific organization :
+Just a makefile to compile and run java file with this specific organization :
 
 ```.
 ├── class
 │   └── *.class
+├── data
 ├── javaDoc
 ├── src
 │   └── *.java
 └── ws
-    └── compile
+    └── Makefile
    ```
+
+class, javaDoc and data folder can be change in the file
 
 It has multiple option :
 
-- `./compile` if there is only one file, will compile and run it. Else it will let you choose
-- `./compile all` will compile every file (package too)
-- `./compile javadoc` will generate the javadoc
-- `./compile compress` will create a .zip file with the javadoc and all files. It's name is `$name-$directory`. You can change the name in the script
-- `./compile <FILENAME>` will compile and run the file
-- `./compile <FILENAME> a` will compile all files before run the program
+- `make` will compile every file in src/ including folder
+- `make compress` same as make
+- `make javadoc` compile all and generate the javadoc in another folder
+- `make zip` compile and generate the javadoc and then place them in a .zip. If there is a data folder, add it to the zip
+- `make run ARGS=FileYouWantToRun` compile every src and then run the specified file
