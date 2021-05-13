@@ -5,8 +5,8 @@
 SOURCES = $$(find ../src -name "*.java")
 CLASS_DIR = class
 JAVADOC_DIR = javaDoc
-DATA_FILE = data
-NAME = 'GIRAUD-RENARD'
+DATA_DIR = data
+NAME = 'YOUR NAME'
 
 NAME_TP=$$(echo "$(CURDIR)" | rev | cut -d/ -f2 | rev)
 
@@ -29,4 +29,4 @@ run: compile
 zip: compile javadoc
 	zip -r ../$(NAME)-$(NAME_TP) ../src/
 	zip -r ../$(NAME)-$(NAME_TP) ../$(JAVADOC_DIR)
-	if test -d ../$(DATA_FILE) ; then zip -r ../$(NAME)-$(NAME_TP) ../$(DATA_FILE)/ ; fi
+	if test -d ../$(DATA_DIR) ; then zip -r ../$(NAME)-$(NAME_TP) ../$(DATA_DIR)/ ; fi
